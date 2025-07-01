@@ -1,7 +1,9 @@
+# Plow Scripts para Ataques de Custos
+
 ## Ataque 1: Busca simples em massa
 
 ```bash
-plow -c 100 -d 30s "https://ileknyw17g.map.azionedge.net/api/search?q=produto"
+plow -c 100 --rate 1 -d 30s "https://ileknyw17g.map.azionedge.net/api/search?q=produto"
 ```
 
 ## Ataque 2: Endpoint caro
@@ -17,4 +19,10 @@ plow -c 50 -d 20s -m POST \
 
 ```bash
 plow -c 20 -d 10s "https://ileknyw17g.map.azionedge.net/api/generate-report/financial"
+```
+
+## Script de reset do KV
+
+```bash
+curl -X POST "https://ileknyw17g.map.azionedge.net/api/reset"
 ```
