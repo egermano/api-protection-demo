@@ -1,7 +1,7 @@
 {
-  "name": "hono-boilerplate",
+  "name": "api-protection-demo",
   "version": "1.0.0",
-  "description": "hono boilerplate",
+  "description": "Demo project using Azion to show how much an API with database requests can cost",
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
