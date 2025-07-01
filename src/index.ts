@@ -24,9 +24,6 @@ app.get("/api/search", async (c) => {
 
   const query = c.req.query("q") || "";
 
-  // Simular busca no Edge SQL
-  // const results = await edgeSQL.query('SELECT * FROM products WHERE name LIKE ?', [`%${query}%`]);
-
   return c.json({
     results: `${Math.ceil(
       Math.random() * 10
