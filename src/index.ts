@@ -1,4 +1,4 @@
-import { loadData, StorageKV, updateStorage } from "@/storage";
+import { loadData, StorageKV, updateData as updateStorage } from "@/kv";
 import dotenv from "dotenv";
 import { Hono } from "hono";
 import { fire } from "hono/service-worker";
@@ -18,8 +18,8 @@ const COSTS = {
 app.get("/api/search", async (c) => {
   const storageKV = await loadData();
 
-  storageKV.requestCount++;
-  storageKV.totalCost += COSTS.search;
+  storageKV.requestCount = storageKV.requestCount + 1;
+  storageKV.totalCost = storageKV.totalCost + COSTS.search;
   await updateStorage(storageKV);
 
   const query = c.req.query("q") || "";
@@ -41,8 +41,8 @@ app.get("/api/search", async (c) => {
 app.post("/api/heavy-search", async (c) => {
   const storageKV = await loadData();
 
-  storageKV.requestCount++;
-  storageKV.totalCost += COSTS.heavySearch;
+  storageKV.requestCount = storageKV.requestCount + 1;
+  storageKV.totalCost = storageKV.totalCost + COSTS.heavySearch;
 
   const { filters, deepSearch, includeAnalytics } = await c.req.json();
 
@@ -63,8 +63,8 @@ app.post("/api/heavy-search", async (c) => {
 app.get("/api/generate-report/:type", async (c) => {
   const storageKV = await loadData();
 
-  storageKV.requestCount++;
-  storageKV.totalCost += COSTS.report;
+  storageKV.requestCount = storageKV.requestCount + 1;
+  storageKV.totalCost = storageKV.totalCost + COSTS.report;
 
   const reportType = c.req.param("type");
 
