@@ -14,6 +14,7 @@ app.get("/api/search", async (c) => {
     results: `${Math.ceil(
       Math.random() * 10
     )} produtos encontrados para: ${query}`,
+    message: "✅ Busca simples realizada",
   });
 });
 
@@ -25,7 +26,7 @@ app.post("/api/heavy-search", async (c) => {
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   return c.json({
-    message: "Busca complexa realizada",
+    message: "⚠️ Busca complexa realizada",
     filters: filters?.length || 0,
   });
 });
@@ -35,11 +36,11 @@ app.get("/api/generate-report/:type", async (c) => {
   const reportType = c.req.param("type");
 
   // Simular delay de processamento
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  await new Promise((resolve) => setTimeout(resolve, 2500));
 
   return c.json({
     report: `Relatório ${reportType} gerado`,
-    alert: "🚨 OPERAÇÃO MUITO DEMORADA!",
+    message: "🚨 OPERAÇÃO MUITO DEMORADA!",
   });
 });
 
