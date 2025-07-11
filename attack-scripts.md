@@ -3,7 +3,7 @@
 ## Ataque 1: Busca simples em massa
 
 ```bash
-plow -c 100 --rate 1 -d 30s "https://ileknyw17g.map.azionedge.net/api/search?q=produto"
+plow -c 100 -d 30s "https://ileknyw17g.map.azionedge.net/api/search?q=tenis"
 ```
 
 ## Ataque 2: Endpoint caro
